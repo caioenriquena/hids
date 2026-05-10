@@ -167,7 +167,7 @@ code {
   .method-flow,
 .insight-panel,
 .defense-grid,
-.compare-table,
+.table-container,
 .quiz-shell {
   width: min(var(--max), calc(100% - 2rem));
   margin: 0 auto;
@@ -1512,29 +1512,48 @@ pre {
   background: var(--mint);
 }
 
-.compare-table {
-  margin-top: 1rem;
-  border: 1px solid var(--white-line);
+.table-container {
+  margin-top: 2rem;
+  overflow-x: auto;
   border-radius: var(--radius);
-  overflow: hidden;
+  border: 1px solid var(--white-line);
   background: var(--panel-strong);
 }
 
-.compare-table [role="row"] {
-  display: grid;
-  grid-template-columns: 0.8fr 1fr 1fr;
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
 }
 
-.compare-table span {
-  padding: 1rem;
+.compare-table th,
+.compare-table td {
+  padding: 1.25rem 1.5rem;
   border-bottom: 1px solid var(--white-line);
   color: var(--muted);
 }
 
-.compare-table .table-head span {
+.compare-table thead th {
   color: var(--mint);
   font-weight: 900;
   background: rgba(98, 255, 216, 0.07);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.compare-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.compare-table tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--ink);
+}
+
+.compare-table td:first-child {
+  color: var(--mint);
+  font-weight: 700;
 }
 
 .quiz-shell {
@@ -1898,12 +1917,11 @@ pre {
     right: 28px;
   }
 
-  .compare-table [role="row"] {
-    grid-template-columns: 1fr;
-  }
-
-  .compare-table span {
-    padding: 0.85rem 1rem;
+  .compare-table th,
+  .compare-table td {
+    padding: 1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
   }
 }
 

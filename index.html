@@ -553,31 +553,37 @@ else:
           </article>
         </div>
 
-        <div class="compare-table reveal" role="table" aria-label="Comparação detalhada entre modelos">
-          <div role="row" class="table-head">
-            <span role="columnheader">Arquitetura</span>
-            <span role="columnheader">Desempenho (AUC)</span>
-            <span role="columnheader">Complexidade (FLOPs)</span>
-            <span role="columnheader">Parâmetros</span>
-          </div>
-          <div role="row">
-            <span role="cell">Transformer</span>
-            <span role="cell">0,990 (Excelente)</span>
-            <span role="cell">1,08 M</span>
-            <span role="cell">255,4 k</span>
-          </div>
-          <div role="row">
-            <span role="cell">LSTM</span>
-            <span role="cell">0,841 (Bom)</span>
-            <span role="cell">738,7 M</span>
-            <span role="cell">159,0 M</span>
-          </div>
-          <div role="row">
-            <span role="cell">SOM</span>
-            <span role="cell">0,804 (Aceitável)</span>
-            <span role="cell">3,8 k</span>
-            <span role="cell">2 k</span>
-          </div>
+        <div class="table-container reveal">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Arquitetura</th>
+                <th>Desempenho (AUC)</th>
+                <th>Complexidade (FLOPs)</th>
+                <th>Parâmetros</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Transformer</td>
+                <td>0,990 (Excelente)</td>
+                <td>1,08 M</td>
+                <td>255,4 k</td>
+              </tr>
+              <tr>
+                <td>LSTM</td>
+                <td>0,841 (Bom)</td>
+                <td>738,7 M</td>
+                <td>159,0 M</td>
+              </tr>
+              <tr>
+                <td>SOM</td>
+                <td>0,804 (Aceitável)</td>
+                <td>3,8 k</td>
+                <td>2 k</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
