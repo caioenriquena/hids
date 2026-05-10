@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sistema Inteligente de Detecção de Ataques Cibernéticos</title>
+    <meta
+      name="description"
+      content="Página didática sobre ataques de dia zero, ransomware e detecção inteligente baseada em HIDS, Transformer e detecção de mudanças."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2307172d'/%3E%3Cpath d='M18 34c0-10 6-18 14-18s14 8 14 18v8H18z' fill='none' stroke='%2362ffd8' stroke-width='5'/%3E%3Crect x='14' y='30' width='36' height='24' rx='6' fill='%2362ffd8'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="site-header" aria-label="Cabeçalho principal">
+      <nav class="nav-shell">
+        <a class="brand" href="#inicio" aria-label="Início">
+          <span class="brand-mark">SI</span>
+          <span>Sistema Inteligente</span>
+        </a>
+        <div class="nav-links" aria-label="Seções do site">
+          <a href="#zero-day">Dia zero</a>
+          <a href="#ransomware">Ransomware</a>
+          <a href="#comparacao">Comparativo</a>
+          <a href="#cenario">Cenário</a>
+          <a href="#metodo">Método</a>
+          <a href="#defesa">Resultados</a>
+          <a href="#quiz">Quiz</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="conteudo">
+      <section class="hero section-band" id="inicio">
+        <div class="grid-lines" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <div class="hero-copy reveal">
+            <span class="eyebrow">HIDS para ataques de dia zero usando aprendizado profundo</span>
+            <h1>Sistema Inteligente de Detecção de Ataques Cibernéticos</h1>
+            <p>
+              Nossa ferramenta observa o comportamento de um computador, aprende o que é normal e
+              percebe quando algo começa a fugir do padrão antes que o ataque cresça.
+            </p>
+            <div class="hero-metric" aria-label="Taxa de detecção do modelo Transformer">
+              <strong>94,1%</strong>
+              <span>de detecção em ataques de dia zero com arquitetura Transformer</span>
+            </div>
+            <div class="hero-actions" aria-label="Ações principais">
+              <a class="button primary" href="#zero-day">Começar a entender</a>
+              <a class="button ghost" href="#defesa">Ver os resultados reais</a>
+            </div>
+          </div>
+
+          <div class="hero-lab reveal" aria-label="Ilustração de um sistema analisando sinais">
+            <div class="scanner-card">
+              <div class="scanner-top">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="scan-stage">
+                <div class="signal normal">
+                  <span class="signal-icon">OK</span>
+                  <span>sequência normal de chamadas</span>
+                </div>
+                <div class="signal alert">
+                  <span class="signal-icon">?</span>
+                  <span>padrão inesperado no host</span>
+                </div>
+                <div class="signal danger">
+                  <span class="signal-icon">!</span>
+                  <span>mudança repetida detectada</span>
+                </div>
+                <div class="scan-beam"></div>
+              </div>
+              <div class="neural-row" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band plain intro-map" aria-labelledby="mapa-title">
+        <div class="content-grid">
+          <div class="section-kicker">Antes de tudo</div>
+          <div>
+            <h2 id="mapa-title">Pense no computador como uma escola cheia de corredores.</h2>
+            <p>
+              Um HIDS, ou sistema de detecção de intrusão em host, fica olhando o que acontece
+              dentro de uma máquina específica. Em vez de vigiar só a porta da rua, ele observa os
+              passos dados nos corredores: quais programas foram chamados, em que ordem e com que
+              frequência.
+            </p>
+          </div>
+        </div>
+        <div class="analogy-strip">
+          <article class="analogy-item reveal">
+            <div class="mini-illustration door" aria-hidden="true">
+              <span class="door-panel"></span>
+              <span class="door-keyhole"></span>
+            </div>
+            <h3>Host</h3>
+            <p>É o computador observado de perto. Pode ser um servidor, notebook ou máquina de testes.</p>
+          </article>
+          <article class="analogy-item reveal">
+            <div class="mini-illustration bug" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <h3>Chamadas de sistema</h3>
+            <p>São rastros deixados pelos programas quando pedem ações ao sistema operacional.</p>
+          </article>
+          <article class="analogy-item reveal">
+            <div class="mini-illustration shield" aria-hidden="true">
+              <span></span>
+            </div>
+            <h3>Detecção de mudanças</h3>
+            <p>É o alarme que dispara quando os rastros começam a mudar de forma suspeita.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-band zero-day" id="zero-day" aria-labelledby="zero-title">
+        <div class="content-grid">
+          <div class="section-kicker">Capítulo 1</div>
+          <div>
+            <h2 id="zero-title">O que é um ataque de dia zero?</h2>
+            <p>
+              Ataque de dia zero é uma exploração de falha antes que o fornecedor saiba do problema
+              ou antes que exista correção disponível. O nome vem dessa urgência: os defensores têm
+              zero dias de vantagem para se preparar.
+            </p>
+          </div>
+        </div>
+
+        <div class="story-board">
+          <article class="story-step reveal">
+            <span class="step-number">01</span>
+            <h3>A falha ainda não tem placa</h3>
+            <p>Ela não aparece em listas conhecidas, assinaturas prontas ou alertas tradicionais.</p>
+          </article>
+          <article class="story-step reveal">
+            <span class="step-number">02</span>
+            <h3>O ataque parece novidade</h3>
+            <p>Ferramentas baseadas apenas em regras podem falhar porque nunca viram aquele padrão.</p>
+          </article>
+          <article class="story-step reveal">
+            <span class="step-number">03</span>
+            <h3>O comportamento entrega pistas</h3>
+            <p>Mesmo sem saber o nome do ataque, o host começa a agir diferente do normal.</p>
+          </article>
+        </div>
+
+        <div class="animation-stage zero-animation reveal" data-animation="zero-day">
+          <div class="animation-copy">
+            <span class="animation-label">Na prática</span>
+            <h3>O ataque não vem com nome. Ele aparece como uma mudança de comportamento.</h3>
+            <p>
+              A cena mostra um fluxo normal de chamadas do host. Quando surge uma ação desconhecida,
+              o detector não tenta “adivinhar o nome” do ataque: ele observa a diferença, acumula
+              sinais e acende o alerta quando a mudança persiste.
+            </p>
+            <button class="replay-button" type="button" data-replay="zero-day">Rever animação</button>
+          </div>
+          <div class="zero-scene" aria-label="Fluxo animado de detecção de ataque de dia zero">
+            <div class="host-box">
+              <span class="host-light"></span>
+              <strong>Host</strong>
+              <small>comportamento normal</small>
+            </div>
+            <div class="packet-lane" aria-hidden="true">
+              <span class="packet p1">open()</span>
+              <span class="packet p2">read()</span>
+              <span class="packet p3">write()</span>
+              <span class="packet threat">???</span>
+              <span class="packet p4">exec()</span>
+            </div>
+            <div class="detector-orbit" aria-hidden="true">
+              <span class="ring r1"></span>
+              <span class="ring r2"></span>
+              <span class="detector-core">HIDS</span>
+            </div>
+            <div class="change-window" aria-label="Janela de detecção de mudanças">
+              <span class="window-dot ok"></span>
+              <span class="window-dot ok"></span>
+              <span class="window-dot warn"></span>
+              <span class="window-dot danger"></span>
+              <span class="window-dot danger"></span>
+              <strong>alerta</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-explainer reveal">
+          <div class="code-panel" aria-label="Código ilustrativo de detecção">
+            <div class="code-header">
+              <span></span><span></span><span></span>
+              <strong>detector_didatico.py</strong>
+            </div>
+            <pre><code>se sequência_do_host fugir_do_normal:
+    marcar_como_outlier()
+    somar_na_janela_de_mudanças()
+    se mudança_persistir:
+        acender_alerta("possível ataque de dia zero")
+else:
+    continuar_observando()</code></pre>
+          </div>
+          <div class="explain-panel">
+            <h3>Traduzindo o código</h3>
+            <p>
+              A ferramenta trata as ações do host como uma sequência. O modelo aprende sequências
+              normais e, quando encontra padrões fora do esperado, esses sinais alimentam a detecção
+              de mudanças.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band ransomware" id="ransomware" aria-labelledby="ransom-title">
+        <div class="content-grid">
+          <div class="section-kicker">Capítulo 2</div>
+          <div>
+            <h2 id="ransom-title">Como funciona um ransomware?</h2>
+            <p>
+              Ransomware é um tipo de malware que tenta sequestrar arquivos. Em vez de só “entrar”
+              no computador, ele procura dados importantes, embaralha o conteúdo com criptografia e
+              tenta pressionar a vítima a pagar pelo acesso.
+            </p>
+          </div>
+        </div>
+
+        <div class="ransom-lab reveal">
+          <div class="file-cabinet" aria-label="Arquivos antes e depois do bloqueio">
+            <div class="file-card unlocked">
+              <span class="file-icon"></span>
+              <strong>fotos.png</strong>
+              <small>abre normalmente</small>
+            </div>
+            <div class="file-card locked">
+              <span class="file-icon"></span>
+              <strong>trabalho.docx</strong>
+              <small>conteúdo embaralhado</small>
+            </div>
+            <div class="file-card note">
+              <span class="file-icon"></span>
+              <strong>aviso.txt</strong>
+              <small>mensagem de resgate</small>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <span>1</span>
+              <p>Chega por anexo, link falso, programa adulterado ou falha explorada.</p>
+            </div>
+            <div class="timeline-item">
+              <span>2</span>
+              <p>Começa a executar ações incomuns dentro do host.</p>
+            </div>
+            <div class="timeline-item">
+              <span>3</span>
+              <p>Altera muitos arquivos em pouco tempo, criando uma mudança brusca de comportamento.</p>
+            </div>
+            <div class="timeline-item">
+              <span>4</span>
+              <p>Mostra uma cobrança e tenta assustar a vítima para pagar rápido.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="animation-stage ransom-animation reveal" data-animation="ransomware">
+          <div class="animation-copy">
+            <span class="animation-label">Na prática</span>
+            <h3>O perigo aparece quando muitos arquivos mudam rápido demais.</h3>
+            <p>
+              A animação mostra arquivos comuns sendo bloqueados em sequência. Para o usuário leigo,
+              isso significa: “minhas coisas pararam de abrir”. Para o detector, significa uma mudança
+              brusca que precisa virar alerta.
+            </p>
+            <button class="replay-button" type="button" data-replay="ransomware">Rever animação</button>
+          </div>
+          <div class="ransom-scene" aria-label="Arquivos sendo bloqueados por ransomware">
+            <div class="ransom-files" aria-hidden="true">
+              <div class="animated-file f1">
+                <span></span>
+                <strong>foto</strong>
+              </div>
+              <div class="animated-file f2">
+                <span></span>
+                <strong>planilha</strong>
+              </div>
+              <div class="animated-file f3">
+                <span></span>
+                <strong>texto</strong>
+              </div>
+            </div>
+            <div class="encrypt-beam" aria-hidden="true"></div>
+            <div class="ransom-lock" aria-hidden="true">
+              <span class="lock-shackle"></span>
+              <span class="lock-body"></span>
+            </div>
+            <div class="ransom-note">
+              <strong>Alerta do HIDS</strong>
+              <span>mudança brusca nos arquivos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="safe-code reveal">
+          <div>
+            <h3>Por que isso conversa com o HIDS?</h3>
+            <p>
+              O ponto aqui é mostrar que ataques desse tipo costumam produzir sinais
+              comportamentais: muitos arquivos mudando, processos fora do padrão e uma sequência de
+              ações diferente da rotina normal.
+            </p>
+          </div>
+          <pre><code>para cada sinal_do_host:
+    se vários_sinais_ficarem_suspeitos:
+        aumentar_pontuação_de_risco()
+        preservar_evidências()
+        avisar_equipe_de_segurança()</code></pre>
+        </div>
+      </section>
+
+      <section class="section-band comparison" id="comparacao" aria-labelledby="comp-title">
+        <div class="content-grid">
+          <div class="section-kicker">Lado a Lado</div>
+          <div>
+            <h2 id="comp-title">Zero-day vs Ransomware</h2>
+            <p>
+              Entenda a diferença fundamental entre a <strong>falha</strong> (Zero-day) e o <strong>objetivo</strong> (Ransomware).
+            </p>
+          </div>
+        </div>
+
+        <div class="comparison-grid reveal">
+          <div class="comp-card">
+            <div class="comp-header zero">
+              <i class="ph-bold ph-bug"></i>
+              <h3>Zero-day</h3>
+              <span>A Oportunidade</span>
+            </div>
+            <ul class="comp-list">
+              <li><strong>O que é:</strong> Uma vulnerabilidade desconhecida pelo fabricante.</li>
+              <li><strong>Papel no ataque:</strong> É a "chave mestra" que permite entrar no sistema sem ser convidado.</li>
+              <li><strong>Visibilidade:</strong> Invisível para defesas que usam listas de vírus conhecidos.</li>
+              <li><strong>Como o HIDS vê:</strong> Nota que um programa está fazendo algo que nunca fez antes.</li>
+            </ul>
+          </div>
+
+          <div class="comp-card">
+            <div class="comp-header ransom">
+              <i class="ph-bold ph-skull"></i>
+              <h3>Ransomware</h3>
+              <span>A Ação</span>
+            </div>
+            <ul class="comp-list">
+              <li><strong>O que é:</strong> Um malware que sequestra dados via criptografia.</li>
+              <li><strong>Papel no ataque:</strong> É o "sequestrador" que executa o crime e pede o resgate.</li>
+              <li><strong>Visibilidade:</strong> Muito barulhento; altera milhares de arquivos em segundos.</li>
+              <li><strong>Como o HIDS vê:</strong> Nota uma explosão de escritas em disco fora do padrão normal.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band scenario" id="cenario" aria-labelledby="scenario-title">
+        <div class="content-grid">
+          <div class="section-kicker">Exemplo Prático</div>
+          <div>
+            <h2 id="scenario-title">Zero-day + Ransomware: O Ataque Invisível</h2>
+            <p>
+              Veja como essas duas ameaças trabalham juntas e como o HIDS percebe a anomalia sem precisar conhecer o vírus previamente.
+            </p>
+          </div>
+        </div>
+
+        <div class="scenario-visual reveal">
+          <div class="scenario-step">
+            <div class="step-icon"><i class="ph-bold ph-door-open"></i></div>
+            <div class="step-content">
+              <h3>1. A Invasão (Zero-day)</h3>
+              <p>O atacante usa uma falha desconhecida em um navegador. O antivírus comum não detecta porque não há "assinatura" para esse ataque ainda.</p>
+              <div class="hids-insight">
+                <i class="ph-bold ph-eye"></i>
+                <span><strong>Visão HIDS:</strong> "Chamada de sistema <code>exec()</code> vinda de um processo inesperado detectada."</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="scenario-connector"><i class="ph-bold ph-arrow-down"></i></div>
+
+          <div class="scenario-step">
+            <div class="step-icon danger"><i class="ph-bold ph-lock-key"></i></div>
+            <div class="step-content">
+              <h3>2. O Sequestro (Ransomware)</h3>
+              <p>Uma vez dentro, o malware começa a criptografar arquivos. Ele age rápido, tentando bloquear tudo antes de ser notado.</p>
+              <div class="hids-insight warning">
+                <i class="ph-bold ph-warning"></i>
+                <span><strong>Visão HIDS:</strong> "Alta frequência de <code>write()</code> em arquivos de usuário. Mudança brusca de comportamento!"</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="scenario-connector"><i class="ph-bold ph-arrow-down"></i></div>
+
+          <div class="scenario-step success">
+            <div class="step-icon success"><i class="ph-bold ph-shield-check"></i></div>
+            <div class="step-content">
+              <h3>3. A Resposta Inteligente</h3>
+              <p>O modelo Transformer nota que a sequência de ações é 94% diferente do normal. O alerta dispara e o processo é isolado.</p>
+              <div class="hids-insight success">
+                <i class="ph-bold ph-check-circle"></i>
+                <span><strong>Resultado:</strong> Ataque bloqueado por desvio de comportamento, não por nome conhecido.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band method" id="metodo" aria-labelledby="metodo-title">
+        <div class="content-grid">
+          <div class="section-kicker">Capítulo 3</div>
+          <div>
+            <h2 id="metodo-title">Detecção Inteligente: O Poder do Aprendizado Comportamental</h2>
+            <p>
+              A nossa abordagem usa HIDS para observar ataques de dia zero em hosts. A ideia
+              principal é combinar modelos como Transformer, LSTM e SOM com um sistema de detecção
+              de mudanças, buscando bom desempenho sem ignorar custo computacional.
+            </p>
+          </div>
+        </div>
+
+        <div class="method-flow">
+          <article class="flow-card reveal">
+            <span class="flow-number">1</span>
+            <h3>O host produz rastros</h3>
+            <p>As chamadas de sistema viram uma sequência, parecida com frases que contam o que a máquina fez.</p>
+          </article>
+          <article class="flow-card reveal">
+            <span class="flow-number">2</span>
+            <h3>O Transformer aprende contexto</h3>
+            <p>Ele observa relações na sequência e aprende como o comportamento normal costuma aparecer.</p>
+          </article>
+          <article class="flow-card reveal">
+            <span class="flow-number">3</span>
+            <h3>A janela de mudanças confirma</h3>
+            <p>Um sinal isolado pode ser ruído. Vários sinais em sequência aumentam a confiança do alerta.</p>
+          </article>
+          <article class="flow-card reveal">
+            <span class="flow-number">4</span>
+            <h3>O alerta fica mais útil</h3>
+            <p>O objetivo é detectar muitas intrusões sem transformar tudo em falso alarme.</p>
+          </article>
+        </div>
+
+        <div class="insight-panel reveal">
+          <div>
+            <span class="animation-label">Pontos fortes</span>
+            <h3>O sistema não precisa decorar todos os ataques possíveis.</h3>
+            <p>
+              A força da abordagem está em aprender o comportamento normal do host. Assim, quando
+              uma ameaça nova aparece, ela pode ser percebida pelo desvio que causa nas chamadas de
+              sistema.
+            </p>
+          </div>
+          <div class="insight-list">
+            <article>
+              <strong>Sem treinar com ataque</strong>
+              <span>Os dados de ataque ficam fora do treino, simulando o desafio de dia zero.</span>
+            </article>
+            <article>
+              <strong>Chamadas de sistema</strong>
+              <span>São rastros mais diretos e com menos ruído do que logs interpretados.</span>
+            </article>
+            <article>
+              <strong>Custo computacional</strong>
+              <span>Além de detectar bem, o modelo precisa caber na realidade da máquina.</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band defense" id="defesa" aria-labelledby="defesa-title">
+        <div class="content-grid">
+          <div class="section-kicker">Desempenho Técnico</div>
+          <div>
+            <h2 id="defesa-title">Resultados Reais: Transformer vs Outros Modelos</h2>
+            <p>
+              Com base em testes rigorosos em ambientes de segurança cibernética, o modelo Transformer demonstrou ser o estado da arte para detecção de intrusão em tempo real.
+            </p>
+          </div>
+        </div>
+
+        <div class="accuracy-panel reveal">
+          <div class="accuracy-number" aria-label="Taxa de detecção de 94,1 por cento">
+            <span class="metric-value"><span>94,1</span><small>%</small></span>
+            <em>Detection Rate (DR)</em>
+          </div>
+          <div>
+            <h3>O Transformer superou as expectativas em ataques de dia zero.</h3>
+            <p>
+              A análise comprovou que a arquitetura baseada em Transformer não apenas detecta mais (94,1%), como também é ordens de grandeza mais eficiente em termos de processamento do que modelos tradicionais como o LSTM.
+            </p>
+            <div class="metric-grid" aria-label="Métricas do resultado">
+              <div>
+                <strong>2,7%</strong>
+                <span>Falsos Alarmes (FAR)</span>
+              </div>
+              <div>
+                <strong>0,990</strong>
+                <span>Área Sob a Curva (AUC)</span>
+              </div>
+              <div>
+                <strong>1,08 M</strong>
+                <span>FLOPs (Eficiência)</span>
+              </div>
+            </div>
+            <p class="metric-note">
+              Enquanto o LSTM exige 738,7 milhões de operações (FLOPs) para uma inferência, o Transformer realiza o mesmo trabalho com apenas 1,08 milhão — uma eficiência energética e de processamento brutal.
+            </p>
+          </div>
+        </div>
+
+        <div class="defense-grid">
+          <article class="defense-card reveal">
+            <span class="card-icon pulse"><i class="ph-bold ph-lightning"></i></span>
+            <h3>Velocidade Absurda</h3>
+            <p>O Transformer processa chamadas de sistema quase instantaneamente devido à sua baixa complexidade computacional.</p>
+          </article>
+          <article class="defense-card reveal">
+            <span class="card-icon radar"><i class="ph-bold ph-target"></i></span>
+            <h3>Precisão Cirúrgica</h3>
+            <p>Com AUC de 0,990, o modelo raramente confunde um usuário normal com um atacante.</p>
+          </article>
+          <article class="defense-card reveal">
+            <span class="card-icon lock"><i class="ph-bold ph-cpu"></i></span>
+            <h3>Leveza para IoT</h3>
+            <p>O modelo SOM (AUC 0,804) surge como alternativa viável para dispositivos com hardware muito limitado.</p>
+          </article>
+        </div>
+
+        <div class="compare-table reveal" role="table" aria-label="Comparação detalhada entre modelos">
+          <div role="row" class="table-head">
+            <span role="columnheader">Arquitetura</span>
+            <span role="columnheader">Desempenho (AUC)</span>
+            <span role="columnheader">Complexidade (FLOPs)</span>
+            <span role="columnheader">Parâmetros</span>
+          </div>
+          <div role="row">
+            <span role="cell">Transformer</span>
+            <span role="cell">0,990 (Excelente)</span>
+            <span role="cell">1,08 M</span>
+            <span role="cell">255,4 k</span>
+          </div>
+          <div role="row">
+            <span role="cell">LSTM</span>
+            <span role="cell">0,841 (Bom)</span>
+            <span role="cell">738,7 M</span>
+            <span role="cell">159,0 M</span>
+          </div>
+          <div role="row">
+            <span role="cell">SOM</span>
+            <span role="cell">0,804 (Aceitável)</span>
+            <span role="cell">3,8 k</span>
+            <span role="cell">2 k</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band quiz" id="quiz" aria-labelledby="quiz-title">
+        <div class="content-grid">
+          <div class="section-kicker">Teste rápido</div>
+          <div>
+            <h2 id="quiz-title">Você entendeu a ideia?</h2>
+            <p>
+              Toque em uma situação e veja como ela seria explicada por um sistema de detecção.
+            </p>
+          </div>
+        </div>
+
+        <div class="quiz-shell reveal">
+          <div class="quiz-buttons" role="tablist" aria-label="Situações de segurança">
+            <button class="quiz-option active" type="button" data-answer="zero" role="tab" aria-selected="true">
+              Host começou a agir diferente
+            </button>
+            <button class="quiz-option" type="button" data-answer="ransom" role="tab" aria-selected="false">
+              Arquivos viraram bagunça
+            </button>
+            <button class="quiz-option" type="button" data-answer="auc" role="tab" aria-selected="false">
+              AUC chegou a 0,990
+            </button>
+          </div>
+          <div class="quiz-result" aria-live="polite">
+            <span class="result-label">Possível ataque de dia zero</span>
+            <p>
+              Pode ser uma ameaça nova. A defesa observa o comportamento, soma sinais suspeitos e
+              procura mudanças consistentes antes de disparar o alerta.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="brand-mark">SI</span>
+          <h3>Sistema Inteligente</h3>
+          <p>Detecção de intrusão baseada em comportamento para um futuro digital mais seguro.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navegação</h4>
+          <a href="#inicio">Início</a>
+          <a href="#zero-day">Zero-day</a>
+          <a href="#ransomware">Ransomware</a>
+          <a href="#metodo">O Método</a>
+        </div>
+        <div class="footer-info">
+          <h4>Sobre</h4>
+          <p>Projeto acadêmico focado em HIDS e Deep Learning para segurança cibernética.</p>
+          <div class="social-icons">
+            <i class="ph-bold ph-github-logo"></i>
+            <i class="ph-bold ph-linkedin-logo"></i>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sistema Inteligente de Detecção. Pronto para deploy no Netlify.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
